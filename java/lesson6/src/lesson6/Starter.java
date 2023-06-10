@@ -1,10 +1,11 @@
-package lesson0;
+package lesson6;
 
 public class Starter {
 
 	public static void main(String[] args) {
-		Test8 t = new Test8();
-		t.doIt1();
+
+		Test6 t = new Test6();
+		t.doIt7();
 
 	}
 

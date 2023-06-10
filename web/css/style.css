@@ -1,0 +1,30 @@
+body {
+  background-image: url(https://msp.c.yimg.jp/images/v2/tpvPBYOX1wpNVI1UoNSgEhaZvCmqN0JEHaslpY2ja5NmOHgGmbZKKELMfvYPoHwg_UKlSIdJXB8TpDZ0-X4QgWODkMSmltgbsfdwxg85FDgkfVd1XKqoSRyZpdlemLoABR5W64LgLPWu6gyHPFp6waf2KNDQUnq1laXUuL1Pnfd-sdbuzxN4RY9bUJfTnpyt/cat33.jpg?errorImage=false);
+  background-size: cover;
+  padding: 100px;
+}
+h1 {
+  color: blueviolet;
+  background-color: aquamarine;
+  font-size: 50px;
+  font-weight: 900;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: italic;
+  text-align: center;
+  margin: 100px;
+  padding: 50px;
+  border-bottom-width: thick;
+  border-color: blueviolet;
+  border-style: dashed;
+}
+
+.message {
+  color: yellow;
+  background-color: cornflowerblue;
+}
+
+#title {
+  font-size: 80px;
+  background-color: brown;
+  color: aliceblue;
+}

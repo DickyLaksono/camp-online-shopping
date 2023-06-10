@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      h2 {
+        position: relative;
+        padding: 1rem 0.5rem;
+        color: #fff;
+      }
+
+      h2:after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        content: "";
+        border-radius: 3px;
+        background-image: -webkit-linear-gradient(20deg, yellow, blue, orange, purple, green, red);
+        background-image: linear-gradient(70deg, yellow, blue, orange, purple, green, red);
+      }
+
+      h3 {
+        position: relative;
+        background: #ffd98a;
+        padding: 2px 5px 2px 25px;
+        font-size: 20px;
+        color: #474747;
+        border-radius: 0 10px 10px 0;
+      }
+
+      h3:before {
+        font-family: "Font Awesome 5 Free";
+        content: "\f135";
+        display: inline-block;
+        line-height: 40px;
+        position: absolute;
+        padding: 0em;
+        color: white;
+        background: #ffa337;
+        font-weight: 900;
+        width: 40px;
+        text-align: center;
+        height: 40px;
+        line-height: 40px;
+        left: -1.35em;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        border: solid 3px white;
+        border-radius: 50%;
+      }
+      .frame {
+        display: inline-block;
+
+        width: 200px;
+
+        height: 140px;
+
+        border-top: 50px solid rgba(0, 0, 0, 0.3);
+
+        border-left: 25px solid rgba(0, 0, 0, 0.3);
+
+        border-bottom: 50px solid rgba(0, 0, 0, 0.3);
+
+        border-right: 50px solid rgba(0, 0, 0, 0.3);
+
+        box-shadow: 0 2px 8px #999;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>I love Miura</h2>
+    <h3>we love miura</h3>
+
+    <div class="frame">
+      <img
+        src="https://msp.c.yimg.jp/images/v2/FUTi93tXq405grZVGgDqG9xX3MH5qFi8wMB_Qy81b-9Kj7eZRUzaQ0L6PYfusniIIDrNinrmo2Ids_evIDmlHsOFxQwgDMri2yEsgZchNj3h87nswfhNrWkOQJhp66ouVKjhrYH37h2l0jOJSCIIIdzbJ4EtCo6daMe6vbPvTCplnUWsK0PsQcPBxsQ5gqf_mKvHYSHgXdHAxBH2SjgxONw76ypIQ2_O7ugWQDWuJesNTllz0K2XT9A6UzcOQYqBFPaGWo4uSAhD1nV24o_f5AtkM6W1QACq7QgK4O9hANx0QNv4NXJPWZtWf1kGrIgeP76gBMmAsP1S-mtO7vN9Xm9j7rohEK1GCrMO_rqyT8E5pp8PejjyXhJzyuId-mDp/20230224-00000007-ovo-000-1-view.jpg?errorImage=false"
+      />
+    </div>
+  </body>
+</html>
