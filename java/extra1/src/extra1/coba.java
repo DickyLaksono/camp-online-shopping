@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class coba {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 
 		Scanner scan = new Scanner(System.in);
 		Random r = new Random();
@@ -16,25 +16,47 @@ public class coba {
 		int playerHealth2 = 50;
 		int playerAttack = 15;
 		int playerDefense = 10;
-		int enemyHealth = 100;
+		int enemyHealth = 200;
 		int enemyAttack = 15;
 		int enemyDefense = 10;
 
-		System.out.println("ようこそ RPG Game へ");
+		System.out.println("--------------------------------------");
 		System.out.println();
-		System.out.println("名前を入力してください : ");
+		System.out.println("キャラクターの名前を入力してください:");
+		Thread.sleep(2000);
 
 		System.out.print("キャラクター 1 : ");
 		playerName1 = scan.nextLine();
 		System.out.print("キャラクター 2 : ");
 		playerName2 = scan.nextLine();
-		System.out.println("ようこそ " + playerName1 + " & " + playerName2 + "!");
+		for (int i = 0; i < 19; i++) {
+			System.out.print("= ");
+			Thread.sleep(500);
+		}
+		Thread.sleep(500);
+		System.out.println();
+		System.out.println();
+		System.out.println("--- ようこそ " + playerName1 + " & " + playerName2 + "! ---");
+		System.out.println();
+		Thread.sleep(500);
+		for (int i = 0; i < 19; i++) {
+			System.out.print("= ");
+			Thread.sleep(500);
+		}
 		while (playerHealth1 > 0 && enemyHealth > 0 || playerHealth2 > 0 && enemyHealth > 0) {
-			System.out.println("====================================");
-			System.out.println(playerName1 + " のHP: " + playerHealth1 + "点");
-			System.out.println(playerName2 + " のHP: " + playerHealth2 + "点");
-			System.out.println("🐉 敵の HP : " + enemyHealth + "点");
+
+			System.out.println("\t");
 			System.out.println("------------------------------------");
+			Thread.sleep(500);
+			System.out.println(playerName1 + " のHP: " + playerHealth1 + "点");
+			Thread.sleep(500);
+			System.out.println(playerName2 + " のHP: " + playerHealth2 + "点");
+			Thread.sleep(500);
+			System.out.println("🐉 敵の HP : " + enemyHealth + "点");
+			System.out.println();
+			System.out.println("------------------------------------");
+			System.out.println();
+			Thread.sleep(500);
 			System.out.println("選択:");
 			System.out.println("1. 攻撃");
 			System.out.println("2. 防衛");
@@ -49,75 +71,95 @@ public class coba {
 
 				if (damageDealt > 0) {
 					enemyHealth -= damageDealt;
-					System.out.println("敵のHPを " + damageDealt + " 点減らしました");
+					System.out.println("敵のHPに " + damageDealt + " ダメージを与える");
 				} else {
 					System.out.println("攻撃無効");
 				}
 
 			} else if (choice == 2) {
 				System.out.println("防衛力アップ +⇑");
+				System.out.println(enemyAttack - playerDefense + "点 ダメージを受ける");
+				System.out.println(playerAttack - enemyDefense + "点 ダメージを与える");
+				enemyHealth -= playerAttack - enemyDefense;
 			} else {
 				System.out.println("攻撃するために' 1 'を入力してください");
 				continue;
 
 			}
 
-			System.out.println("====================================");
-			System.out.println("2番目ののプレイヤーのターン : ");
-			int choice2 = scan.nextInt();
+			Thread.sleep(500);
 
-			int damageDealt = playerAttack;
-			int damageReceived = enemyAttack - playerDefense;
-			if (choice2 == 1) {
+			while (true) {
+				System.out.println("====================================");
+				System.out.println("2番目ののプレイヤーのターン : ");
+				int choice2 = scan.nextInt();
 
-				if (damageDealt > 0) {
-					enemyHealth -= damageDealt;
-					System.out.println("敵のHPを " + damageDealt + " 点減らしました");
-				} else {
-					System.out.println("攻撃無効");
-				}
-				if (damageReceived > 0) {
+				int damageDealt = playerAttack;
+				int damageReceived = enemyAttack - playerDefense;
+				if (choice2 == 1) {
+
+					if (damageDealt > 0) {
+						enemyHealth -= damageDealt;
+						System.out.println("敵のHPに " + damageDealt + " ダメージを与える");
+					} else {
+						System.out.println("攻撃無効");
+					}
+					if (damageReceived > 0) {
+						int R = r.nextInt(3);
+						if (R == 1) {
+							playerHealth1 -= enemyAttack;
+							System.out.println();
+							System.out.println(playerName1 + " 敵の攻撃を " + enemyAttack + " 点ダメージを受ける.");
+						} else if (R == 2) {
+							playerHealth2 -= enemyAttack;
+							System.out.println();
+							System.out.println(playerName2 + " 敵の攻撃を " + enemyAttack + " 点ダメージを受ける.");
+						} else {
+							Thread.sleep(1000);
+							System.out.println();
+							System.out.println("敵攻撃がミスしました");
+						}
+
+					}
+					break;
+				} else if (choice2 == 2 && damageReceived > 0) {
+					System.out.println("防衛力アップ +⇑");
+					enemyHealth -= playerAttack - enemyDefense;
+					System.out.println(enemyAttack - playerDefense + "点 ダメージを受る");
+					System.out.println(playerAttack - enemyDefense + "点 ダメージを与える");
 					int R = r.nextInt(3);
 					if (R == 1) {
 						playerHealth1 -= enemyAttack;
+
 						System.out.println();
-						System.out.println(playerName1 + " 敵の攻撃を " + enemyAttack + " 点ダメージを受けた.");
+						System.out.println(playerName1 + " 敵の攻撃を " + enemyAttack + "点 ダメージを受ける.");
 					} else if (R == 2) {
-						playerHealth2 -= enemyAttack;
+						playerHealth2 -= damageReceived;
+
 						System.out.println();
-						System.out.println(playerName2 + " 敵の攻撃を " + enemyAttack + " 点ダメージを受けた.");
+						System.out.println(playerName2 + " 敵の攻撃を " + damageReceived + "点 ダメージを受ける.");
 					} else {
-						System.out.println("敵の攻撃無効.");
+						Thread.sleep(1000);
+						System.out.println();
+						System.out.println("敵攻撃がミスしました");
 					}
+					break;
 
-				}
-			} else if (choice2 == 2 && damageReceived > 0) {
-				System.out.println("防衛力アップ +⇑");
-				int R = r.nextInt(3);
-				if (R == 1) {
-					playerHealth1 -= damageReceived;
-					System.out.println();
-					System.out.println(playerName1 + " 敵の攻撃を " + damageReceived + " 点ダメージを受けた.");
-				} else if (R == 2) {
-					playerHealth2 -= damageReceived;
-					System.out.println();
-					System.out.println(playerName2 + " 敵の攻撃を " + damageReceived + " 点ダメージを受けた.");
 				} else {
-					System.out.println("敵の攻撃無効.");
+					System.out.println("攻撃するために' 1 'を入力してください");
+					continue;
 				}
-
-			} else {
-				System.out.println("攻撃するために' 1 'を入力してください");
-				continue;
 			}
 
 			System.out.println("");
-			if (playerHealth1 <= 0 || playerHealth2 <= 0) {
+			if (playerHealth1 <= 0 || playerHealth2 <= 0 && enemyHealth > 0) {
+				System.out.println();
 				System.out.println("====================================");
 				System.out.println("😢😢😢 残念!!あなたは負けた 😢😢😢");
 				break;
 
 			} else if (enemyHealth <= 0) {
+				System.out.println();
 				System.out.println("====================================");
 				System.out.println("🎺🎺🎺 おめでとう!!敵を倒しました 🎺🎺🎺");
 				break;
