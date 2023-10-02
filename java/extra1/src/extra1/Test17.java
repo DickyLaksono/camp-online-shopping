@@ -16,15 +16,25 @@ public class Test17 {
 		System.out.println(str.substring(3, 8));
 		System.out.println(str.toUpperCase());
 		System.out.println(str.toLowerCase());
+		System.out.println(str.lastIndexOf("y"));
+		System.out.println(str.startsWith("m"));
+		System.out.println(str.endsWith("a"));
+		System.out.println(str.isEmpty());
+		System.out.println(str.substring(str.length() - 1));
+		char c2 = str.charAt(str.length() - 1);
+		System.out.println(c2);
 
-		String[] arr1 = str.split("");
+		System.out.println();
 		char[] arr2 = str.toCharArray();
-
 		for (int i = 0; i < arr2.length; i++) {
-			char c = arr2[i];
-			System.out.println(c);
+			System.out.println(arr2[i]);
 		}
 
+		System.out.println();
+		String[] arr1 = str.split("a");
+		for (int i = 0; i < arr1.length; i++) {
+			System.out.println(arr1[i]);
+		}
 	}
 
 }

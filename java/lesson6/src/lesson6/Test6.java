@@ -28,7 +28,7 @@ public class Test6 {
 
 		int i = 1;
 
-		while (i <= num) {
+		while (i <= num) {//ini jika mencapai angka yang ditentukan maka akan berakhir
 			System.out.println("HELLO");
 			i++;
 		}
@@ -94,7 +94,7 @@ public class Test6 {
 		int total = 0;
 		while (true) {
 			int num = scan.nextInt();
-			if (num < 0) {
+			if (num <= 0) {
 				System.out.println("終了");
 				break;
 			}

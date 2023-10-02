@@ -22,7 +22,7 @@ public class PairWork1 {
 		int playerHealth2 = 50;
 		int playerAttack = 15;
 		int playerDefense = 10;
-		int enemyHealth = 200;
+		int enemyHealth = 100;
 		int enemyAttack = 15;
 		int enemyDefense = 10;
 
