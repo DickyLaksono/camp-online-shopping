@@ -6,6 +6,15 @@ public class Item {
 	private String itemName;
 	private int price;
 	private String image;
+	private String detail;
+
+	public String getDetail() {
+		return detail;
+	}
+
+	public void setDetail(String detail) {
+		this.detail = detail;
+	}
 
 	public int getItemId() {
 		return itemId;

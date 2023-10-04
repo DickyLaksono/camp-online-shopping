@@ -24,11 +24,8 @@ public class ItemModel {
 			Connection conn = DriverManager.getConnection(url);
 
 			String sql = "select * from items where itemname like ? order by itemid";
-
 			PreparedStatement stmt = conn.prepareStatement(sql);
-
 			stmt.setString(1, "%" + word + "%");
-
 			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
@@ -38,6 +35,7 @@ public class ItemModel {
 				item.setItemName(rs.getString("itemname"));
 				item.setPrice(rs.getInt("price"));
 				item.setImage(rs.getString("image"));
+				item.setDetail(rs.getString("detail"));
 
 				result.add(item);
 			}

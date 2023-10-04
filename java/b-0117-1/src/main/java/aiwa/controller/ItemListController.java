@@ -21,6 +21,9 @@ public class ItemListController extends HttpServlet {
 
 		//1. parameter
 		String word = request.getParameter("keyword");
+		if (word == null) {
+			word = "";
+		}
 
 		//2. model
 		ItemModel im = new ItemModel();
@@ -28,6 +31,7 @@ public class ItemListController extends HttpServlet {
 
 		//3. view
 		request.setAttribute("items", items);
+		request.setAttribute("word", word);
 		request.getRequestDispatcher("/itemListView3.jsp").forward(request, response);
 
 	}
