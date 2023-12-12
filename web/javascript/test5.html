@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script>
+      function doIt1() {
+        doIt3(doIt2);
+
+        let ff = function () {
+          alert("OK2");
+        };
+
+        doIt3(ff);
+
+        doIt3(function () {
+          alert("OK3");
+        });
+      }
+
+      function doIt2() {
+        alert("OK");
+      }
+
+      function doIt3(f) {
+        f();
+      }
+    </script>
+  </head>
+  <body>
+    <input type="button" onclick="doIt1()" value="click" />
+  </body>
+</html>

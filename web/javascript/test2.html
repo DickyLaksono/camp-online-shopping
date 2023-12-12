@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script>
+      function doIt() {
+        let image = document.getElementById("e1");
+        let age = document.getElementById("a");
+
+        image.src =
+          "https://msp.c.yimg.jp/images/v2/FUTi93tXq405grZVGgDqG9ZA_SRLCfeO7LNA7jdqZ1HJrbOhy3LIMTHqnHOBso2WNZSp4VnwdUQPLwnj-DtOTJuaCSFn2fi1RYHiItkD3B8QRkXN6-zwnZzeIrJZLbiFnmWfM2ANWtVTVJt2P3XspReYUpdDjfd_mi2Gqvg_Vhz4LWPR67u5PQVXRIRQohCa/main_doraemon.png?errorImage=false";
+      }
+
+      function big() {
+        let image = document.getElementById("e1");
+        image.height += 10;
+        image.width += 10;
+      }
+
+      function small() {
+        let image = document.getElementById("e1");
+        image.height -= 10;
+        image.width -= 10;
+      }
+    </script>
+  </head>
+  <body>
+    age : <input type="number" id="a" />
+    <input type="button" value="klick" onclick="doIt()" />
+    <input type="button" value="big" onclick="big()" />
+    <input type="button" value="small" onclick="small()" />
+    <img src="" alt="" id="e1" />
+  </body>
+</html>

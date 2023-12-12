@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+      //   $(function () { //ini untuk mempersingkat dari function ready
+      //     $("#message").text("HALLO");
+      //   });
+      // function doIt1() {
+      //   // alert($("#id").val());
+      //   $("#txt").val("hello");
+      // }
+
+      // $(document).ready(function () {});// ready
+      // $(function () {
+      //   $("#btn").on("click", function () {
+      //     $("#i").attr(
+      //       "scr:",
+      //       "https://msp.c.yimg.jp/images/v2/FUTi93tXq405grZVGgDqGx5cm8knTLo61O84kVTxOan841a30-aIJSoqkmlQNsP4F-X6_2rmNhKHpNVW_7VD39zNQ4h8mVaiIF5GUJ0-bE1y3E3aklUrCGV6GMn9eor4Eb7k0Lqy0Ut1Xb6ADvz08_BYaBvl5Tpg60d0TJiZNfGHIz57Bf_pLGlrzHQDJv7aUBlgQAxjlRIam5dhdjm6zwIYZSFpi9w6aae_cQLK7iM=/NobitaNobi.png?errorImage=false"
+      //     );
+      //     $("#i").attr("height", "30px");
+      //   });
+      // });
+
+      $(function () {
+        $("#btn1").on("click", function () {
+          $("#d").html("<h1>こんにちは</h1>");
+          $("#i").attr(
+            "src",
+            "https://msp.c.yimg.jp/images/v2/FUTi93tXq405grZVGgDqGx5cm8knTLo61O84kVTxOan841a30-aIJSoqkmlQNsP4-Qv0KVqX9M9vYFUiwJk7TdkCfoFTFZOgEp1VEWkfGqj-RggEkRdztv6Q4HHPNY6w_RuWyjjZXtdlvsgp4e_UmsHyJlXLDUcseGFkYedyX0QY5T3xFBVo_ht3cxBpDGtHrtvQGdN0sJvM-MC0TacXuA2Ycm_Zx_TOBZLXvYlpOYV-rdmS-JDkd7d-jpzP83Nd5y_xIVpYL3Hh_m56M-KtWmOsV-bXJq8rvISWVZGUxnQDpvDnQj-YBSO04k0PBIIf8XaknNHB7voJFzNbKIocbhTQQbzQ0p4caWkyaSELo94=/1200px-Flag_of_Vietnam.svg.png"
+          );
+        });
+        $("#btn2").on("click", function () {
+          $("#d").html("<h1>こんにちは</h1>");
+          $("#i").attr(
+            "src",
+            "https://msp.c.yimg.jp/images/v2/FUTi93tXq405grZVGgDqGx5cm8knTLo61O84kVTxOan841a30-aIJSoqkmlQNsP4-Qv0KVqX9M9vYFUiwJk7TexsxjH_EfXop78AUSJR0oQ1pGSVFmB40IufY8XG7qmQojRGE_gDI0yNC9ze3jDSArzaBvVKIOSoa_6JTgV-0diYAJFLM9WMwnWU-4GlKVzLyrLhAGukbrXtP1ZbZH-jgbyNwp7KLS15WfgASCq6zuSfy3Ydg5_na8kLzjF6bhoTm5oJIWfZ-LVFgeIi2QPcH_Q1soXsrNTQenIYdAe3fFXFL-ZPZ57oN-GaHxpZtFJm9AQUVl2VyLJw0g3d3y2q0Pd2JaV3KZbbek81WR0z1E2UX6On82zInXOvsgLSJlNf_VO-Q4fSlVW0py9lnG1cKtFYwjpxkM1ycHaEHnWBkgTiRwMoUcpj9y9aaC8R4Kmy6wr8dgMpW_j0W11X23jkJaI0RhP4AyNMjQvc3t4w0gK82gb1SiDkqGv-iU4FftHYRsBSK2cOFWnepEh4QSgHXw==/220px-Flag_of_Japan_281870E28093199929.svg.png?errorImage=false"
+          );
+        });
+        $("#btn3").on("click", function () {
+          $("#d").html("こんにちは");
+          $("#i").attr(
+            "src",
+            "https://msp.c.yimg.jp/images/v2/FUTi93tXq405grZVGgDqG8ubdLLQ9yvMQzUOZbSir4H0GVB06-QP5Wp4BHvrImB80yKWZb-4rUKtFDMLZvgDp-U-jitPMiG0nQX_pZYNOsFeQCJBebn62rzScXBE0l1UZFrx29kOLdsKqJns34OnW_FJSd6g6Rr7U7OcJcua9nUngfJ9CzxGbbO3f5NYY8YXPgwnuEF7R08Z2lS83xr45KD-rtWKx6Fw5A_TRT6tico=/Flag-Indonesia.jpg?errorImage=false"
+          );
+        });
+        $("#show").on("click", function () {
+          $("#i").fadeIn(1000);
+        });
+        $("#hide").on("click", function () {
+          $("#i").fadeOut(1000);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <input type="button" id="btn1" value="click" />
+    <input type="button" id="btn2" value="click" />
+    <input type="button" id="btn3" value="click" />
+    <br /><br />
+    <input type="button" id="show" value="show" />
+    <input type="button" id="hide" value="hide" />
+    <div id="d"></div>
+    <div>
+      <img src="" id="i" alt="" />
+    </div>
+  </body>
+</html>

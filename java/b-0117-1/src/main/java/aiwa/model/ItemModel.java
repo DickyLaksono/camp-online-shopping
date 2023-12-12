@@ -19,7 +19,7 @@ public class ItemModel {
 		try {
 			Class.forName("org.sqlite.JDBC");
 
-			String url = "jdbc:sqlite:" + context.getRealPath("WEB-INF/item.db");
+			String url = "jdbc:sqlite:" + context.getRealPath("WEB-INF/test.db");
 
 			Connection conn = DriverManager.getConnection(url);
 
@@ -54,7 +54,7 @@ public class ItemModel {
 		try {
 			Class.forName("org.sqlite.JDBC");
 
-			String url = "jdbc:sqlite:" + context.getRealPath("WEB-INF/item.db");
+			String url = "jdbc:sqlite:" + context.getRealPath("WEB-INF/test.db");
 			Connection conn = DriverManager.getConnection(url);
 
 			String sql = "select * from items order by itemid";

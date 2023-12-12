@@ -8,7 +8,16 @@ public class Item {
 	private int price;
 	private double rating;
 	private String image;
+	private String model;
 	private Category category;
+
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
 
 	public Category getCategory() {
 		return category;

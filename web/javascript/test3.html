@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <script>
+      function onOther() {
+        let elem = document.getElementById("other");
+        elem.disabled = false;
+      }
+
+      function offOther() {
+        let elem = document.getElementById("other");
+        elem.disabled = true;
+        elem.value = "";
+      }
+
+      function send() {
+        let r1 = document.getElementById("r1");
+        let r2 = document.getElementById("r2");
+        let r3 = document.getElementById("r3");
+        let r4 = document.getElementById("r4");
+
+        let txt = document.getElementById("other");
+
+        if (r1.checked) {
+          alert("あなたの好きな果物は" + r1.value + "ですね");
+        } else if (r2.checked) {
+          alert("あなたの好きな果物は" + r2.value + "ですね");
+        } else if (r3.checked) {
+          alert("あなたの好きな果物は" + r3.value + "ですね");
+        } else if (r4.checked) {
+          if (txt.value == "") {
+            alert("その他の内容を入力してください");
+            txt.focus();
+          } else {
+            alert("あなたの好きな果物は" + txt.value + "ですね");
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h2>好きな果物</h2>
+    <input type="radio" id="r1" name="f" checked onchange="offOther()" />リンゴ <input type="radio" id="r2" name="f" onchange="offOther()" />みかん <input type="radio" id="r3" name="f" onchange="offOther()" />バナナ
+    <input type="radio" id="r4" name="f" onchange="onOther()" />その他
+    <input type="text" id="other" disabled />
+    <input type="button" value="確認" onclick="send()" />
+  </body>
+</html>

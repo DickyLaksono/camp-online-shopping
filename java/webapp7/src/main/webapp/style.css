@@ -1,0 +1,24 @@
+@charset "ISO-8859-1";
+
+.card-img-top{
+	boject-fit:cover;
+	height : 250px;
+}
+	
+.container{
+	width: 1000px;
+}
+	
+body{
+	background-image: url();
+}
+
+card-img-top:hover{
+	opacity: 0.8;
+	cursor: pointer;
+}
+
+/* detail */
+th, td{
+		color: white;
+
