@@ -17,9 +17,8 @@ public class SignModel extends BaseModel {
 
 	public account checkAccountExist(String user) {
 
-		try {
+		try (Connection cnn = super.connect();) {
 
-			Connection cnn = super.connect();
 			String sql = "select * from account where username = ? ";
 			PreparedStatement stmt = cnn.prepareStatement(sql);
 			stmt.setString(1, user);
@@ -27,11 +26,12 @@ public class SignModel extends BaseModel {
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				account a = new account(rs.getInt("id"), rs.getString("username"), rs.getString("email"),
-						rs.getString("password"));
+						rs.getString("password"), rs.getInt("isAdmin"), rs.getString("zipcode"),
+						rs.getString("address"));
+				cnn.close();
 				return a;
 			}
 
-			cnn.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -45,10 +45,15 @@ public class SignModel extends BaseModel {
 
 			cnn = super.connect();
 
-			PreparedStatement stmt = cnn.prepareStatement("insert into account (username, password) values (?,?)");
+			PreparedStatement stmt = cnn
+					.prepareStatement(
+							"insert into account (username, password, email,zipcode, address) values (?,?,?,?,?)");
 			int index = 1;
 			stmt.setString(index++, a.getUser());
 			stmt.setString(index++, a.getPassword());
+			stmt.setString(index++, a.getEmail());
+			stmt.setString(index++, a.getZipcode());
+			stmt.setString(index++, a.getAddress());
 
 			stmt.executeUpdate();
 			cnn.close();

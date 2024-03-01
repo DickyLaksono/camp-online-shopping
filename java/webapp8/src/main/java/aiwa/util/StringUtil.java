@@ -1,6 +1,32 @@
 package aiwa.util;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class StringUtil {
+
+	public static String toDate(String d) {
+
+		try {
+			//String → Date
+			//String s = "2023-02-02";
+			SimpleDateFormat in = new SimpleDateFormat("yyyy-MM-dd");
+
+			//Date → String
+			SimpleDateFormat out = new SimpleDateFormat("yyyy年MM月dd日");
+
+			Date dt = in.parse(d);
+			String s = out.format(dt);
+			return s;
+
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		return "";
+
+	}
 
 	public static String toMoney(int num) {
 

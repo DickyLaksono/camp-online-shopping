@@ -23,10 +23,7 @@ public class LoginController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String name = request.getParameter("username");
-		String pass = request.getParameter("password");
-		System.out.println(name);
-		System.out.println(pass);
+
 		//parameter
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
@@ -41,12 +38,17 @@ public class LoginController extends HttpServlet {
 			categoryid = "0";
 		}
 
+		String page = request.getParameter("page");
+		if (page == null) {
+			page = "0";
+		}
+
 		//model
 		AccountModel am = new AccountModel(getServletContext());
 		account a = am.logIn(username, password);
 
 		ItemModel im = new ItemModel(getServletContext());
-		List<Item> items = im.findCondition(word, Integer.parseInt(categoryid));
+		List<Item> items = im.findCondition(word, Integer.parseInt(categoryid), Integer.parseInt(page));
 		//List<Item> items = im.findAll();
 		List<Item> featured = im.featured();
 		List<Item> recent = im.recent();
@@ -57,12 +59,13 @@ public class LoginController extends HttpServlet {
 		//view
 
 		if (a == null) {
-			request.setAttribute("mess", "Wrong Password or Email");
+			request.setAttribute("mess", "Wrong Username or Password");
 			request.getRequestDispatcher("/Login.jsp").forward(request, response);
 		} else {
 
 			request.setAttribute("word", word);
 			request.setAttribute("categoryid", categoryid);
+			request.setAttribute("page", Integer.parseInt(page));
 
 			request.setAttribute("category", category);
 			request.setAttribute("items", items);
@@ -71,6 +74,7 @@ public class LoginController extends HttpServlet {
 
 			HttpSession session = request.getSession();
 			session.setAttribute("username", username);
+			session.setAttribute("a", a);
 
 			request.getRequestDispatcher("/ItemListView.jsp").forward(request, response);
 

@@ -5,6 +5,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 
+
  <%
 	//List<Item> keyword = (List<Item>) request.getAttribute("keyword");
     String word = (String) request.getAttribute("word");
@@ -16,6 +17,8 @@
 	
 	
 	String username = (String) session.getAttribute("username");
+	List<Item> cart =  (List<Item>) session.getAttribute("cart");
+	Item item = (Item) request.getAttribute("item");
 %>
 
 <!-- Navbar Start -->
@@ -26,6 +29,7 @@
                     <h6 class="text-dark m-0"><i class="fa fa-bars mr-2"></i>Categories</h6>
                     <i class="fa fa-angle-down text-dark"></i>
                 </a>
+                <!--  -->
                 <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 999;">
                     <div class="navbar-nav w-100">
                         <% for (Category c : categories) { %>
@@ -45,15 +49,17 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="ItemListController" class="nav-item nav-link active">Home</a>
+                            <a href="ItemListController" class="nav-item nav-link ">Home</a>
                             <a href="ItemAllController" class="nav-item nav-link">All Product</a>
+                            <!-- 
                             <a href="#" class="nav-item nav-link disabled">Shop </a>
                             <a href="#" class="nav-item nav-link disabled">Shop Detail</a>
+                             -->
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down mt-1"></i></a>
                                 <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
-                                    <a href="ItemCartController" class="dropdown-item">Shopping Cart</a>
-                                    <a href="ItemCheckoutController" class="dropdown-item">Checkout</a>
+                                    <a href="CartListController" class="dropdown-item">Shopping Cart</a>
+                                    <a href="OrderListController" class="dropdown-item">Checkout</a>
                                 </div>
                             </div>
                             <a href="ItemContactController" class="nav-item nav-link">Contact</a>
@@ -65,7 +71,11 @@
                             </a>
                             <a href="" class="btn px-0 ml-3">
                                 <i class="fas fa-shopping-cart text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                                <% int total = 0; %>
+                                <!-- 
+                                 -->
+                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;"><%= total %></span>
+                                
                             </a>
                         </div>
                     </div>
@@ -74,3 +84,4 @@
         </div>
     </div>
     <!-- Navbar End -->
+    

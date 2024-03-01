@@ -31,9 +31,14 @@ public class ItemCheckoutController extends HttpServlet {
 			categoryid = "0";
 		}
 
+		String page = request.getParameter("page");
+		if (page == null) {
+			page = "0";
+		}
+
 		//model
 		ItemModel im = new ItemModel(getServletContext());
-		List<Item> items = im.findCondition(word, Integer.parseInt(categoryid));
+		List<Item> items = im.findCondition(word, Integer.parseInt(categoryid), Integer.parseInt(page));
 		//List<Item> items = im.findAll();
 		List<Item> featured = im.featured();
 		List<Item> recent = im.recent();
@@ -45,6 +50,7 @@ public class ItemCheckoutController extends HttpServlet {
 		//request.setAttribute("keyword", keyword);
 		request.setAttribute("word", word);
 		request.setAttribute("categoryid", categoryid);
+		request.setAttribute("page", Integer.parseInt(page));
 
 		request.setAttribute("category", category);
 		request.setAttribute("items", items);

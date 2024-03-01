@@ -20,7 +20,7 @@ public class BaseModel {
 			Class.forName(("org.sqlite.JDBC"));
 
 			String url = "jdbc:sqlite:" + context.getRealPath("WEB-INF/webapp8.db");
-			System.out.println(context.getRealPath("WEB-INF/webapp8.db"));
+			//System.out.println(context.getRealPath("WEB-INF/webapp8.db"));
 			Connection conn = DriverManager.getConnection(url);
 
 			return conn;

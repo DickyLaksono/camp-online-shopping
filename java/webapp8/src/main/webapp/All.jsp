@@ -1,3 +1,4 @@
+<%@page import="aiwa.model.ItemModel"%>
 <%@page import="aiwa.util.StringUtil"%>
 <%@page import="aiwa.entity.Category"%>
 <%@page import="aiwa.entity.Item"%>
@@ -13,6 +14,10 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" ></script>
 
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
@@ -31,16 +36,28 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
     
+     <!-- bootstrap v5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    
      <%
 	
      String word = (String) request.getAttribute("word");
 	List<Item> items = (List<Item>) request.getAttribute("items");
+	List<Item> size = (List<Item>) request.getAttribute("size");
 	
 	List<Item> featured = (List<Item>) request.getAttribute("featured");
 	List<Item> recent = (List<Item>) request.getAttribute("recent");
 	List<Category> categories = (List<Category>) request.getAttribute("category");
 	
 	String username = (String) session.getAttribute("username");
+	
+	int p = (int) request.getAttribute("page");
+	int count = (int) request.getAttribute("count");
+	
+	 int total = count / ItemModel.limitPage; 
+	
     %>
 </head>
 
@@ -222,18 +239,20 @@
                     <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
                         <div class="product-item bg-light mb-4">
                             <div class="product-img position-relative overflow-hidden">
-                                <img class="img-fluid w-100" src="<%= i.getImage1() %>" alt="" style="height: 350px;padding:10px;">
+                                <a href="ItemDetailController?itemid=<%= i.getItemId() %>"><img class="img-fluid w-100" src="<%= i.getImage1() %>" alt="" style="height: 350px;padding:10px;"></a>
+                                
                                 <div class="product-action">
-                                    <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
+                                    <a class="btn btn-outline-dark btn-square" href="ItemCartController?itemid=<%= i.getItemId() %>"><i class="fa fa-shopping-cart"></i></a>
                                     <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
-                                    <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
+                                    <a class="btn btn-outline-dark btn-square" href="ItemAllController"><i class="fa fa-sync-alt"></i></a>
+                                    <a class="btn btn-outline-dark btn-square" href="#k"><i class="fa fa-search"></i></a>
                                 </div>
+                                
                             </div>
                             <div class="text-center py-4" style="overflow:hidden;">
                                 <a class="h6 text-decoration-none text-truncate" href="ItemDetailController?itemid=<%= i.getItemId() %>"><%= i.getItemName() %></a>
                                 <div class="d-flex align-items-center justify-content-center mt-2">
-                                    <h5>￥<%= StringUtil.toMoney(i.getPrice()) %></h5><h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                                    <h5>￥<%= StringUtil.toMoney(i.getPrice()) %></h5>
                                 </div>
                                 <div class="d-flex align-items-center justify-content-center mb-1">
                                     <small class=" text-primary mr-1"><%= StringUtil.toRating(i.getRating()) %></small>
@@ -247,11 +266,35 @@
                     <div class="col-12">
                         <nav>
                           <ul class="pagination justify-content-center">
+                          
+                          <% if(p > 1) {%>
+                          	<li class="page-item "><a class="page-link" href="ItemAllController?page=1"><span>First</span></a></li>
+                          	<li class="page-item "><a class="page-link" href="ItemAllController?page=<%= p - 1 %>"><span>Previous</span></a></li>
+                          <% }else { %>
+                          	<li class="page-item disabled"><a class="page-link" href="ItemAllController?page=0"><span>First</span></a></li>
+                          	<li class="page-item disabled"><a class="page-link" href="ItemAllController?page=<%= p - 1 %>"><span>Previous</span></a></li>
+                          <% } %>
+                          
+                          <% for (int i = 0; i <= total; i++) { %>
+                          	<% if(i+1  == p) { %>
+                          		<li class="page-item active"><a class="page-link" href=""><%= i + 1 %></a></li>
+                          	<% } else { %>
+                          		<li class="page-item"><a class="page-link" href="ItemAllController?page=<%= i + 1 %>"><%= i + 1 %></a></li>
+                          	<% } %>
+                          <% } %>
+                          
+                          <% if(p > 0) { %>
+                        	<li class="page-item"><a class="page-link" href="ItemAllController?page=<%= p + 1 %>">Next</a></li>
+                        	<li class="page-item"><a class="page-link" href="ItemAllController?page=<%= p + total %>">Last</a></li>
+                       	  <% } %>
+                          
+                          <!-- 
                             <li class="page-item disabled"><a class="page-link" href="#">Previous</span></a></li>
                             <li class="page-item active"><a class="page-link" href="#">1</a></li>
                             <li class="page-item"><a class="page-link" href="#">2</a></li>
                             <li class="page-item"><a class="page-link" href="#">3</a></li>
                             <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                             -->
                           </ul>
                         </nav>
                     </div>
@@ -263,76 +306,7 @@
     <!-- Shop End -->
 
 
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-secondary mt-5 pt-5">
-        <div class="row px-xl-5 pt-5">
-            <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
-                <h5 class="text-secondary text-uppercase mb-4">Get In Touch</h5>
-                <p class="mb-4">No dolore ipsum accusam no lorem. Invidunt sed clita kasd clita et et dolor sed dolor. Rebum tempor no vero est magna amet no</p>
-                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>123 Street, New York, USA</p>
-                <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>info@example.com</p>
-                <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+012 345 67890</p>
-            </div>
-            <div class="col-lg-8 col-md-12">
-                <div class="row">
-                    <div class="col-md-4 mb-5">
-                        <h5 class="text-secondary text-uppercase mb-4">Quick Shop</h5>
-                        <div class="d-flex flex-column justify-content-start">
-                            <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                            <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
-                            <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shop Detail</a>
-                            <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
-                            <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
-                            <a class="text-secondary" href="#"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-5">
-                        <h5 class="text-secondary text-uppercase mb-4">My Account</h5>
-                        <div class="d-flex flex-column justify-content-start">
-                            <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                            <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Our Shop</a>
-                            <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shop Detail</a>
-                            <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
-                            <a class="text-secondary mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
-                            <a class="text-secondary" href="#"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-5">
-                        <h5 class="text-secondary text-uppercase mb-4">Newsletter</h5>
-                        <p>Duo stet tempor ipsum sit amet magna ipsum tempor est</p>
-                        <form action="">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Your Email Address">
-                                <div class="input-group-append">
-                                    <button class="btn btn-primary">Sign Up</button>
-                                </div>
-                            </div>
-                        </form>
-                        <h6 class="text-secondary text-uppercase mt-4 mb-3">Follow Us</h6>
-                        <div class="d-flex">
-                            <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a class="btn btn-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row border-top mx-xl-5 py-4" style="border-color: rgba(256, 256, 256, .1) !important;">
-            <div class="col-md-6 px-xl-0">
-                <p class="mb-md-0 text-center text-md-left text-secondary">
-                    &copy; <a class="text-primary" href="#">Domain</a>. All Rights Reserved. Designed
-                    by
-                    <a class="text-primary" href="https://htmlcodex.com">Dicky Laksono</a>
-                </p>
-            </div>
-            <div class="col-md-6 px-xl-0 text-center text-md-right">
-                <img class="img-fluid" src="img/payments.png" alt="">
-            </div>
-        </div>
-    </div>
-    <!-- Footer End -->
+   <jsp:include page="Footer.jsp"></jsp:include>
 
 
     <!-- Back to Top -->

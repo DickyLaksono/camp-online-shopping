@@ -194,10 +194,10 @@ background-image:url(https://msp.c.yimg.jp/images/v2/FUTi93tXq405grZVGgDqG6WSSvM
   <p>2023 © Designed And Created By <br><a href="https://www.instagram.com/dkyy_laksono/" class="text-white fw-bold">Dicky Laksono</a></p>
 </footer>
 <!-- end footer -->
- <!-- 
+ 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.min.js"></script>
     <script src="scriptquiz.js"></script>
-  -->
+ 
 
 
 <!-- 

@@ -31,20 +31,32 @@ public class ItemAllController extends HttpServlet {
 			categoryid = "0";
 		}
 
+		String page = request.getParameter("page");
+		if (page == null) {
+			page = "0";
+		}
+
 		//model
 		ItemModel im = new ItemModel(getServletContext());
-		List<Item> items = im.findCondition(word, Integer.parseInt(categoryid));
-		//List<Item> items = im.findAll();
+		List<Item> items = im.findCondition(word, Integer.parseInt(categoryid), Integer.parseInt(page));
+		int count = im.Page(word, Integer.parseInt(categoryid));
+		List<Item> size = im.findAll();
 		List<Item> featured = im.featured();
 		List<Item> recent = im.recent();
 
 		CategoryModel cm = new CategoryModel(getServletContext());
 		List<Category> category = cm.findAll();
 
+		//		System.out.println(size.size());
+
 		//view
 		//request.setAttribute("keyword", keyword);
+
 		request.setAttribute("word", word);
 		request.setAttribute("categoryid", categoryid);
+		request.setAttribute("page", Integer.parseInt(page));
+		request.setAttribute("count", count);
+		request.setAttribute("size", size);
 
 		request.setAttribute("category", category);
 		request.setAttribute("items", items);

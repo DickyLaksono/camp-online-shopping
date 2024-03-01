@@ -5,6 +5,7 @@ public class Item {
 	private int itemId;
 	private String itemName;
 	private int price;
+	private int discount;
 	private String detail;
 	private int rating;
 	private String image1;
@@ -16,6 +17,28 @@ public class Item {
 	private int recommendation;
 	private int reviews;
 	private Category category;
+
+	private int quantity = 1;
+
+	public int getSubTotal() {
+		return price * quantity;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public int getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(int discount) {
+		this.discount = discount;
+	}
 
 	public int getReviews() {
 		return reviews;

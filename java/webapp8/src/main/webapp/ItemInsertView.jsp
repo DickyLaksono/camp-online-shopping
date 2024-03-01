@@ -53,28 +53,112 @@ String username = (String) session.getAttribute("username");
 
 <jsp:include page="Navbar.jsp"></jsp:include>
 
-<form action="ItemInsertController" method="post">
+<!-- Breadcrumb Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="#">Home</a>
+                    <span class="breadcrumb-item active">New Record</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
 
-	<input type="text" name="itemname" placeholder="product name"><br>
-	<input type="number" name="price" placeholder="price"><br>
-	<textarea name="detail" placeholder="detail"></textarea><br>
-	<input type="number" max="5" min="0" step="0.1" name="rating" placeholder="rating"> <br>
-	<input type="text" name="image1" placeholder="image1"> <br>
-	<input type="text" name="image2" placeholder="image2"> <br>
-	<input type="text" name="image3" placeholder="image3"> <br>
-	<input type="text" name="image4" placeholder="image4"> <br>
-	<select name="categoryid">
+    <!-- Contact Start -->
+    <div class="container-fluid">
+        <h2 class="section-title position-relative text-uppercase text-center mx-xl-5 mb-4"><span class="bg-secondary pr-3">New Record</span></h2>
+        <div class="row px-xl-5 justify-content-center">
+            <div class="col-lg-7 mb-5 " >
+                <div class="contact-form bg-light p-30">
+                    <div id="success"></div>
+                    <form action="ItemInsertController" method="post">
+                        <div class="control-group">
+	                        <input id="name" type="text" name="itemname" class="form-control" placeholder="Product name" required="required" data-validation-required-message="Please enter product name">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                       		<input id="email" type="number" name="price" placeholder="Price" class="form-control" required="required" data-validation-required-message="Please enter price">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                       		<input id="email" type="number" max="5" min="0" step="0.1" name="rating" placeholder="Rating" class="form-control" required="required" data-validation-required-message="Please enter rating">
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        
+                        <div class="control-group mb-3">
+                        <select name="categoryid" class="form-select">
 	
-		<option></option>
-		<% for (Category c : categories) { %>
-		<option value="<%= c.getCategoryId() %>">
-			<%= c.getCategoryName() %>
-		</option>
-		<% } %>
-	</select>
+							<option></option>
+							<% for (Category c : categories) { %>
+							<option value="<%= c.getCategoryId() %>">
+								<%= c.getCategoryName() %>
+							</option>
+							<% } %>
+							
+						</select>
+						</div>
+                        <div class="control-group">
+                            <input type="text" class="form-control" id="subject" name="image1" placeholder="Image1"
+                                required="required" data-validation-required-message="Please enter image" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <input type="text" class="form-control" id="subject" name="image2" placeholder="Image2"
+                                required="required" data-validation-required-message="Please enter image" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <input type="text" class="form-control" id="subject" name="image3" placeholder="Image3"
+                                required="required" data-validation-required-message="Please enter image" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <input type="text" class="form-control" id="subject" name="image4" placeholder="Image4"
+                                required="required" data-validation-required-message="Please enter image" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <textarea class="form-control" rows="8" id="message" name="detail" placeholder="Detail"
+                                required="required"
+                                data-validation-required-message="Please enter your message"></textarea>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary py-2 px-4"  type="submit" id="sendMessageButton">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
 
-	<input type="submit" value="request">
-</form>
+        </div>
+    </div>
+    <!-- Contact End -->
+
+
+    <jsp:include page="Footer.jsp"></jsp:include>
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+
+
+
 
 </body>
 </html>

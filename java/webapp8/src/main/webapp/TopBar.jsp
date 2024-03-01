@@ -1,8 +1,11 @@
+<%@page import="aiwa.entity.account"%>
 <%@page import="aiwa.entity.Category"%>
 <%@page import="aiwa.entity.Item"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    
     
    <%
 	//List<Item> keyword = (List<Item>) request.getAttribute("keyword");
@@ -17,6 +20,9 @@
 	List<Category> categories = (List<Category>) request.getAttribute("category");
 	
 	String username = (String) session.getAttribute("username");
+	account a = (account) session.getAttribute("a");
+	
+	Item item = (Item) request.getAttribute("item");
     %>
 
 <!-- Topbar Start -->
@@ -33,29 +39,50 @@
             <div class="col-lg-6 text-center text-lg-right">
                 <div class="d-inline-flex align-items-center">
                     <div class="btn-group mx-2">
-                    	<% if (username != null) { %>
-                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown"><%= username %></button>
-                        <div class="dropdown-menu dropdown-menu-right">
-	                            <a href="LoginController"><button class="dropdown-item" type="button">Sign in</button></a>
-	                            <a href="SignUpController"><button class="dropdown-item" type="button">Sign Up</button></a>
-	                            <a href="LogoutController"><button class="dropdown-item" type="button">Logout</button></a>
-	                    </div>
+                    	<% if(a != null) { %>
+	                    	<% if (username != null) { %>
+	                    		<% if(a.getIsAdmin() == 1) { %>
+			                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown"><i class="bi bi-person-lock"></i> <%= username %></button>
+			                        <div class="dropdown-menu dropdown-menu-right">
+				                            <a href="LoginController"><button class="dropdown-item" type="button">Sign in</button></a>
+				                            <!-- <a href="SignUpController"><button class="dropdown-item" type="button">Sign Up</button></a> -->
+				                            <a href="SignUpController"><button class="dropdown-item" type="button">Setting</button></a>
+				                            <a href="LogoutController"><button class="dropdown-item" type="button">Logout</button></a>
+				                    </div>
+	                    		<% } if (a.getIsAdmin() == 0){ %>
+	                    			<button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown"><i class="bi bi-person-check"></i> <%= username %></button>
+			                        <div class="dropdown-menu dropdown-menu-right">
+				                            <a href="LoginController"><button class="dropdown-item" type="button">Sign in</button></a>
+				                            <a href="SignUpController"><button class="dropdown-item" type="button">Setting</button></a>
+				                            <a href="LogoutController"><button class="dropdown-item" type="button">Logout</button></a>
+				                    </div>
+	                    		<% } %>
+	                    	<% } %>
                     	<% } else { %>
                     
-	                    <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Account</button>
+	                    <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown"><i class="bi bi-people"></i> Account</button>
 	                        <div class="dropdown-menu dropdown-menu-right">
 	                            <a href="LoginController"><button class="dropdown-item" type="button">Sign in</button></a>
 	                            <a href="SignUpController"><button class="dropdown-item" type="button">Sign Up</button></a>
 	                        </div>
                     	<% } %>
+                    	
 	                </div>
 	                
+	                <% if(a != null) {%>
+	                <% if(a.getIsAdmin() == 1) { %>
 	                <div class="btn-group mx-2">
 	                <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Help</button>
 	                        <div class="dropdown-menu dropdown-menu-right">
-	                            <a href="ItemInsertController"><button class="dropdown-item" type="button">Update</button></a>
+	                            <a href="ItemInsertController"><button class="dropdown-item" type="button">New Record</button></a>
+	                            <% if (item != null) { %>
+	                            <a href="ItemUpdateController?itemid=<%= item.getItemId() %>"><button class="dropdown-item" type="button">Update</button></a>
+	                            <a href="ItemDeleteController?itemid=<%= item.getItemId() %>"><button class="dropdown-item" type="button">Delete</button></a>
+	                            <% } %>
 	                        </div>
 	                 </div>
+	                 <% } %>
+	                 <% } %>
                     
                     <div class="btn-group mx-2">
                         <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">USD</button>
@@ -96,7 +123,7 @@
             <div class="col-lg-4 col-6 text-left">
                 <form action="ItemAllController">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for products" name="keyword" value="<%=word %>">
+                        <input type="text" id="k" class="form-control" placeholder="Search for products" name="keyword" value="<%=word %>">
                         <div class="input-group-append">
                             <span class="input-group-text bg-transparent text-primary">
                                 <i class="fa fa-search"></i>

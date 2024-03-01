@@ -15,12 +15,17 @@
     
     <%
     	String mess = (String) request.getAttribute("mess");
+    	if(mess == null){
+    		mess = "";
+    		
+    	}
     %>
   </head>
   <body>
     <div class="bg-img">
       <div class="content">
         <header>Sign In Form</header>
+        <div style="color:red; margin-bottom: 10px;"><%= mess %></div>
         <form action="LoginController"method="post">
           <div class="field">
             <span class="fa fa-user"></span>

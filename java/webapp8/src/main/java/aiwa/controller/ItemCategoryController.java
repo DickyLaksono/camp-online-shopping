@@ -22,13 +22,18 @@ public class ItemCategoryController extends HttpServlet {
 			throws ServletException, IOException {
 
 		//parameter
-
-		String ct = request.getParameter("categoryid");
+		String categoryid = request.getParameter("categoryid");
 		//String cn = request.getParameter("categoryname");
+
+		String page = request.getParameter("page");
+		if (page == null) {
+			page = "0";
+		}
 
 		//model
 		ItemModel im = new ItemModel(getServletContext());
-		List<Item> type = im.findCondition("", Integer.parseInt(ct));
+		List<Item> type = im.findCondition("", Integer.parseInt(categoryid), Integer.parseInt(page));
+		//int count = im.Page("", Integer.parseInt(categoryid));
 
 		List<Item> items = im.findAll();
 		List<Item> featured = im.featured();
@@ -36,13 +41,15 @@ public class ItemCategoryController extends HttpServlet {
 
 		CategoryModel cm = new CategoryModel(getServletContext());
 		List<Category> category = cm.findAll();
-		Category categoryname = cm.findCategory(Integer.parseInt(ct));
+		Category categoryname = cm.findCategory(Integer.parseInt(categoryid));
 
 		//view
 
 		request.setAttribute("category", category);
 		request.setAttribute("type", type);
 		request.setAttribute("categoryname", categoryname);
+		request.setAttribute("page", Integer.parseInt(page));
+		//request.setAttribute("count", count);
 
 		request.setAttribute("items", items);
 		request.setAttribute("featured", featured);

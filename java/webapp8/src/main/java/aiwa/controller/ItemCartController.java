@@ -1,6 +1,7 @@
 package aiwa.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -8,9 +9,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import aiwa.entity.Category;
 import aiwa.entity.Item;
+import aiwa.entity.account;
 import aiwa.model.CategoryModel;
 import aiwa.model.ItemModel;
 
@@ -21,7 +24,17 @@ public class ItemCartController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		// Login Check
+		HttpSession session = request.getSession();
+		account user = (account) session.getAttribute("a");
+		if (user == null || user.getIsAdmin() == 1) {
+			response.sendRedirect("Login.jsp");
+			return;
+		}
+
 		//parameter
+		String itemId = request.getParameter("itemid");
+
 		String word = request.getParameter("keyword");
 		if (word == null) {
 			word = "";
@@ -31,26 +44,42 @@ public class ItemCartController extends HttpServlet {
 			categoryid = "0";
 		}
 
+		String page = request.getParameter("page");
+		if (page == null) {
+			page = "0";
+		}
+
 		//model
 		ItemModel im = new ItemModel(getServletContext());
-		List<Item> items = im.findCondition(word, Integer.parseInt(categoryid));
-		//List<Item> items = im.findAll();
-		List<Item> featured = im.featured();
-		List<Item> recent = im.recent();
+		Item item = im.findById(Integer.parseInt(itemId));
+
+		//*** jika ada getAttribute harus ada getAttribute, makannya jika dahulukan get maka didalamnya "null" .
+		// ** pada get yang pertama ini berisi "null", karena pada awal dijalankan tidak di set
+		//** tapi jika yang kedua dan setelahnya sudah ter set di bawah, jadi isi dari cart nya tidak null
+		List<Item> cart = (List<Item>) session.getAttribute("cart");
+		if (cart == null) {
+			cart = new ArrayList<>(); // **  dengan menggunakan new artinya seperti mereset mulai dari nol
+		}
+		boolean hit = false;
+
+		for (Item i : cart) {
+			if (i.getItemId() == Integer.parseInt(itemId)) {
+				i.setQuantity(i.getQuantity() + 1);
+				hit = true;
+
+			}
+		}
+		if (!hit) {
+			cart.add(item);
+		}
+		session.setAttribute("cart", cart);
 
 		CategoryModel cm = new CategoryModel(getServletContext());
 		List<Category> category = cm.findAll();
 
 		//view
-		//request.setAttribute("keyword", keyword);
-		request.setAttribute("word", word);
-		request.setAttribute("categoryid", categoryid);
-
 		request.setAttribute("category", category);
-		request.setAttribute("items", items);
-		request.setAttribute("featured", featured);
-		request.setAttribute("recent", recent);
-		request.getRequestDispatcher("/cart.jsp").forward(request, response);
+		response.sendRedirect("CartListController");
 
 	}
 
