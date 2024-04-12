@@ -13,7 +13,7 @@ namespace WebApplication1.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Information()
         {
             return View();
         }
