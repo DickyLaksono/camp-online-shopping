@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34723.18
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ユーザ入力の取得と出力", "ユーザ入力の取得と出力\ユーザ入力の取得と出力.csproj", "{AB61F69E-5A7A-4C19-AA8D-6A31433D26D1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AB61F69E-5A7A-4C19-AA8D-6A31433D26D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB61F69E-5A7A-4C19-AA8D-6A31433D26D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB61F69E-5A7A-4C19-AA8D-6A31433D26D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB61F69E-5A7A-4C19-AA8D-6A31433D26D1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E9E2FAEA-43D7-457E-B841-00E968E75B15}
+	EndGlobalSection
+EndGlobal
