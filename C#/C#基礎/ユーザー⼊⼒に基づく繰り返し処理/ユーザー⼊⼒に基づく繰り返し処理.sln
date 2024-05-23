@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34723.18
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ユーザー⼊⼒に基づく繰り返し処理", "ユーザー⼊⼒に基づく繰り返し処理\ユーザー⼊⼒に基づく繰り返し処理.csproj", "{11CC3952-860D-4C1D-91A5-11974A3A3CCE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{11CC3952-860D-4C1D-91A5-11974A3A3CCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11CC3952-860D-4C1D-91A5-11974A3A3CCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11CC3952-860D-4C1D-91A5-11974A3A3CCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11CC3952-860D-4C1D-91A5-11974A3A3CCE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {12652293-8FFA-4EAA-B98C-C052D7DB8CF0}
+	EndGlobalSection
+EndGlobal

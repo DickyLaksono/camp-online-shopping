@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34723.18
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "配列の 宣⾔と 要素の 出⼒", "配列の 宣⾔と 要素の 出⼒\配列の 宣⾔と 要素の 出⼒.csproj", "{8293E1A6-BC30-4483-B099-D7316AC65C94}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8293E1A6-BC30-4483-B099-D7316AC65C94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8293E1A6-BC30-4483-B099-D7316AC65C94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8293E1A6-BC30-4483-B099-D7316AC65C94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8293E1A6-BC30-4483-B099-D7316AC65C94}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {02008749-8342-402B-8A20-100A2AE6568E}
+	EndGlobalSection
+EndGlobal
