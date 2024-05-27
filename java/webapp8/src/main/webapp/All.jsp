@@ -42,6 +42,7 @@
     
     
      <%
+     
 	
      String word = (String) request.getAttribute("word");
 	List<Item> items = (List<Item>) request.getAttribute("items");
