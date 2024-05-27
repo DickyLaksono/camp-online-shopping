@@ -57,10 +57,10 @@ List<Item> cart =  (List<Item>) session.getAttribute("cart");
 	<div class="container mt-5 mb-3">
 		<ul class="nav nav-tabs ">
 		  <li class="nav-item">
-		    <a class="nav-link active" aria-current="page" href="ItemListController">商品リスト</a>
+		    <a class="nav-link " aria-current="page" href="ItemListController">商品リスト</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link" href="CartListController">ショッピングカート</a>
+		    <a class="nav-link active" href="CartListController">ショッピングカート</a>
 		  </li>
 		  <li class="nav-item">
 		    <a class="nav-link" href="OrderInsertController">購入履歴</a>
