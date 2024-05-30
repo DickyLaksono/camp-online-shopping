@@ -56,7 +56,9 @@ namespace ランダムプログラム作成
             string doingR = doing[number3];
 
 
-            MessageBox.Show(whoR+ "が" + whatR + doingR);
+            MessageBox.Show(whoR+ "が" +
+                "" +
+                "" + whatR + doingR);
         }
     }
 }
