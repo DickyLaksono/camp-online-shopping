@@ -42,7 +42,7 @@ namespace 合計表示_ListView
 
             foreach (string[] item in products)
             {
-                int total = int.Parse(item[1]) * int.Parse(item[2]);
+                    int total = int.Parse(item[1]) * int.Parse(item[2]);
 
                 string[] displayProduct = [
                         item[0],

@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             listView1 = new ListView();
+            columnHeader1 = new ColumnHeader();
+            columnHeader2 = new ColumnHeader();
             button1 = new Button();
             button2 = new Button();
             openFileDialog = new OpenFileDialog();
             saveFileDialog = new SaveFileDialog();
-            columnHeader1 = new ColumnHeader();
-            columnHeader2 = new ColumnHeader();
             SuspendLayout();
             // 
             // listView1
@@ -48,6 +48,16 @@
             listView1.TabIndex = 0;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
+            // 
+            // columnHeader1
+            // 
+            columnHeader1.Text = "郵便番号";
+            columnHeader1.Width = 90;
+            // 
+            // columnHeader2
+            // 
+            columnHeader2.Text = "住所";
+            columnHeader2.Width = 500;
             // 
             // button1
             // 
@@ -67,21 +77,16 @@
             button2.TabIndex = 2;
             button2.Text = "書き込み";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
             // openFileDialog
             // 
             openFileDialog.FileName = "openFileDialog1";
             openFileDialog.FileOk += openFileDialog_FileOk;
             // 
-            // columnHeader1
+            // saveFileDialog
             // 
-            columnHeader1.Text = "郵便番号";
-            columnHeader1.Width = 90;
-            // 
-            // columnHeader2
-            // 
-            columnHeader2.Text = "住所";
-            columnHeader2.Width = 500;
+            saveFileDialog.FileOk += saveFileDialog_FileOk;
             // 
             // Form_Main
             // 

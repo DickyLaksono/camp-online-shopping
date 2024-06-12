@@ -21,6 +21,7 @@ namespace 課題17
             StreamReader sr = new StreamReader(filePath, Encoding.UTF8);
             while (-1 < sr.Peek())
             {
+
                 this.result.Add(sr.ReadLine().Split(' '));
             }
             sr.Close();
