@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34723.18
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ファイルから複数行読み込む練習", "ファイルから複数行読み込む練習\ファイルから複数行読み込む練習.csproj", "{1D7EE882-B62F-47DB-A28D-82B0DB3C7EFD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1D7EE882-B62F-47DB-A28D-82B0DB3C7EFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D7EE882-B62F-47DB-A28D-82B0DB3C7EFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D7EE882-B62F-47DB-A28D-82B0DB3C7EFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D7EE882-B62F-47DB-A28D-82B0DB3C7EFD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9C75B4E9-CC4C-49D8-AD09-1CC0A82CBB81}
+	EndGlobalSection
+EndGlobal

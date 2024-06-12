@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34723.18
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ファイルから特定の⽂字列を含む⾏のみを読み込み", "ファイルから特定の⽂字列を含む⾏のみを読み込み\ファイルから特定の⽂字列を含む⾏のみを読み込み.csproj", "{1372414D-6839-4B05-A034-A00F0771E72E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1372414D-6839-4B05-A034-A00F0771E72E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1372414D-6839-4B05-A034-A00F0771E72E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1372414D-6839-4B05-A034-A00F0771E72E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1372414D-6839-4B05-A034-A00F0771E72E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5C3DBD7E-637B-48DA-8F8D-DCD94D93FDAD}
+	EndGlobalSection
+EndGlobal
