@@ -1,0 +1,8 @@
+﻿@{
+    string[] food = (string[])ViewData["food"];
+}
+
+@foreach(var item in food)
+{
+    <p>@item</p>
+}
